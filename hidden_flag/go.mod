@@ -1,3 +1,3 @@
-module site1
+module hidden
 
 go 1.23.1

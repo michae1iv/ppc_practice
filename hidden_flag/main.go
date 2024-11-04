@@ -53,5 +53,5 @@ func main() {
 	fileServer := http.FileServer(http.Dir("./ui/static/"))
 	mux.Handle("/static/", http.StripPrefix("/static", fileServer))
 
-	http.ListenAndServe("localhost:8000", mux)
+	http.ListenAndServe(":8020", mux)
 }

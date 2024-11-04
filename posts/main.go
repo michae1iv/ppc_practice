@@ -19,11 +19,10 @@ func InitPages() error {
 }
 
 func main() {
-	database, err := db.ConnectDB()
+	err := db.RunMigrations()
 	if err != nil {
 		log.Fatal(err)
 	}
-	db.RunMigrations(database)
 
 	mux := http.NewServeMux()
 

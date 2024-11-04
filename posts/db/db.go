@@ -1,15 +1,20 @@
 package db
 
 import (
+	"log"
+
 	"gorm.io/driver/sqlite"
 	"gorm.io/gorm"
 )
 
+var DB *gorm.DB
+
 type Posts struct {
 	gorm.Model
-	Template string
-	AuthorID int
-	Users    Users `gorm:"foreignKey:AuthorID"`
+	Name      string
+	Author    string
+	Text      string
+	Thumbnail string
 }
 
 type Users struct {
@@ -18,18 +23,20 @@ type Users struct {
 	Password string
 }
 
-func ConnectDB() (*gorm.DB, error) {
-	db, err := gorm.Open(sqlite.Open("./posts.db"), &gorm.Config{})
+func ConnectDB() {
+	var err error
+	DB, err = gorm.Open(sqlite.Open("users.db"), &gorm.Config{})
 	if err != nil {
-		return nil, err
+		log.Fatalf("Ошибка подключения к базе данных: %v", err)
 	}
-	return db, nil
 }
 
-func RunMigrations(db *gorm.DB) error {
-	err := db.AutoMigrate(&Posts{}, &Users{})
+func RunMigrations() error {
+	ConnectDB()
+	err := DB.AutoMigrate(&Posts{}, &Users{})
 	if err != nil {
 		return err
 	}
+	InsertData()
 	return nil
 }
