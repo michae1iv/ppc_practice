@@ -52,8 +52,11 @@ flag{y0u_Ar3_REEEally_ppC_master_Congrats}
 flag{Wher3--1S-The_EEEEEEnd}
 ## Полезные ссылки:
 [Регулярные выражения](https://habr.com/ru/articles/349860/)
+
 [Руководство по библиотеке requests](https://pythonru.com/biblioteki/kratkoe-rukovodstvo-po-biblioteke-python-requests)
+
 [Чтение файлов в Python](https://www.w3schools.com/python/python_file_open.asp)
+
 [Справочник по модулю os](https://docs-python.ru/standart-library/modul-os-python/)
 
 
